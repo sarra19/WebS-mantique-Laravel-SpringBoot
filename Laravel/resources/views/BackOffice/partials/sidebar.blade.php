@@ -10,7 +10,8 @@
       <ul class="app-menu">
         <li><a class="app-menu__item {{ request()->routeIs('dashboard') ? 'active' : '' }}" href="{{route('dashboard')}}"><i class="app-menu__icon bi bi-house"></i><span class="app-menu__label">Home Page</span></a></li>
         
-       
+        <li><a class="app-menu__item" href="{{ route('users.index') }}"><i class="app-menu__icon icon bi bi-calendar"></i> Users Management </a></li>
+
         <li class="treeview"><a class="app-menu__item" href="#" data-toggle="treeview"><i class="app-menu__icon bi bi-trash"></i><span class="app-menu__label">Waste Management</span><i class="treeview-indicator bi bi-chevron-right"></i></a>
           <ul class="treeview-menu">
             <li><a class="treeview-item" href="{{route('wastes.index')}}"><i class="icon bi bi-circle-fill"></i> Waste </a></li>

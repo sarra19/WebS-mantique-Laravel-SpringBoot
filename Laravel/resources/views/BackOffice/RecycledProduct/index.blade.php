@@ -41,10 +41,15 @@
     <a href="{{ route('recycledProducts.statistics', $salesCenter->id) }}" class="btn btn-info">
         <i class="bi bi-bar-chart-line"></i> View Price Statistics
     </a>
-        <a href="{{ route('BackOffice.RecycledProduct.create', $salesCenter->id) }}" class="btn btn-primary">
-        <i class="bi bi-plus-circle"></i> Add New Product
-            </a>
-        </div>
+
+    <a href="{{ route('category.index') }}" class="btn btn-success ">
+        <i class="bi bi-list"></i> List of Categories
+    </a>
+    <a href="{{ route('recycled-content.index') }}" class="btn btn-warning ">
+        <i class="bi bi-recycle"></i> List of Recycled Content
+    </a>
+</div>
+
 
         <form method="GET" action="{{ route('BackOffice.RecycledProduct.index', $salesCenter->id) }}" class="mb-4 d-flex justify-content-center" id="searchForm">
     <div class="row w-100 justify-content-center">
@@ -88,10 +93,14 @@
     });
 </script>
    <!-- Back Button -->
-   <div class="mb-3">
+   <div class="d-flex justify-content-between mb-3">
+    
             <a href="{{ route('salesCenters.index') }}" class="btn btn-light">
                 <i class="bi bi-arrow-left"></i> Back
             </a>
+            <a href="{{ route('BackOffice.RecycledProduct.create', $salesCenter->id) }}" class="btn btn-primary">
+        <i class="bi bi-plus-circle"></i> Add New Product
+    </a>
         </div>
         <div class="row">
         @if(session('success'))

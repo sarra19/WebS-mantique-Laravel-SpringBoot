@@ -8,6 +8,9 @@ use App\Http\Controllers\RecyclingCenterController;
 use App\Http\Controllers\DistributionController;
 use App\Http\Controllers\SalesCenterController;
 use App\Http\Controllers\RecycledProductController;
+use App\Http\Controllers\UserController;
+use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RecycledContentController;
 
 use App\Http\Controllers\DeliveryAgenceController;
 
@@ -358,3 +361,44 @@ Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/recycled-product
 
 Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/sales-center/{id}/recycled-products/statistics', [RecycledProductController::class, 'showStatistics'])->name('recycledProducts.statistics');
 Route::middleware(['auth:sanctum', 'verified', 'admin'])->get('/salesCenters/map/{id}', [SalesCenterController::class, 'showMap'])->name('salesCenters.map');
+
+
+Route::get('users', [UserController::class, 'index'])->name('users.index');          // Get all users
+Route::post('users', [UserController::class, 'store'])->name('users.store');         // Create a new user
+Route::get('showusers/{id}', [UserController::class, 'show'])->name('showuser');       // Get a single user by ID
+Route::put('users/{id}', [UserController::class, 'update'])->name('users.update');   // Update user information
+Route::get('users/{id}', [UserController::class, 'edit'])->name('users.edit');   // Update user information
+Route::delete('users/{id}', [UserController::class, 'destroy'])->name('users.destroy'); // Delete a user
+Route::get('/createusers', [UserController::class, 'create'])->name('userCreate');
+
+
+Route::get('category', [CategoryController::class, 'index'])->name('category.index');          // Get all users
+Route::get('/createcategory', [CategoryController::class, 'create'])->name('category.create');
+Route::post('/categorystore', [CategoryController::class, 'store'])->name('category.store');         // Create a new user
+
+Route::get('category/{id}', [CategoryController::class, 'show'])->name('category.show');        // Show a single category by ID
+Route::get('category/{id}/edit', [CategoryController::class, 'edit'])->name('category.edit');   // Show form to edit category
+Route::put('category/{id}', [CategoryController::class, 'update'])->name('category.update');    // Update category
+Route::delete('category/{id}', [CategoryController::class, 'destroy'])->name('category.destroy'); // Delete a category
+
+
+// Display all recycled contents
+Route::get('recycled-content', [RecycledContentController::class, 'index'])->name('recycled-content.index');
+
+// Show form to create a new recycled content
+Route::get('/create-recycled-content', [RecycledContentController::class, 'create'])->name('recycled-content.create');
+
+// Store a newly created recycled content
+Route::post('/recycled-content/store', [RecycledContentController::class, 'store'])->name('recycled-content.store');
+
+// Display a single recycled content by ID
+Route::get('recycled-content/{id}', [RecycledContentController::class, 'show'])->name('recycled-content.show');
+
+// Show form to edit a recycled content
+Route::get('recycled-content/{id}/edit', [RecycledContentController::class, 'edit'])->name('recycled-content.edit');
+
+// Update the specified recycled content
+Route::put('recycled-content/{id}', [RecycledContentController::class, 'update'])->name('recycled-content.update');
+
+// Delete a recycled content
+Route::delete('recycled-content/{id}', [RecycledContentController::class, 'destroy'])->name('recycled-content.destroy');

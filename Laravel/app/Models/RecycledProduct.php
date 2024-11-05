@@ -15,11 +15,22 @@ class RecycledProduct extends Model
         'description',
         'quantity',
         'price',
-        'sales_center_id'  
+        'sales_center_id',
+        'category_id',         // Add category_id to fillable
+        'recycled_content_id',  // Add recycled_content_id to fillable  
     ];
 
     public function salesCenter()
     {
         return $this->belongsTo(SalesCenter::class);
+    }
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+
+    public function RecycledContent()
+    {
+        return $this->belongsTo(RecycledContent::class);
     }
 }
